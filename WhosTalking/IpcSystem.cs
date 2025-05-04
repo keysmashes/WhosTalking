@@ -24,6 +24,9 @@ public class IpcSystem: IDisposable {
         this.cgGetUserState.UnregisterFunc();
     }
 
+    /// <remarks>
+    ///     Must be called from the main thread.
+    /// </remarks>
     private int GetUserState(string name) {
         var user = this.plugin.XivToDiscord(name);
         var state = user?.State ?? UserState.None;
