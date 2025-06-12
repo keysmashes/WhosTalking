@@ -751,8 +751,22 @@ public sealed class Plugin: IDalamudPlugin {
                     [..partyAddon->PartyMembers, ..partyAddon->TrustMembers, partyAddon->Chocobo, partyAddon->Pet];
 
                 foreach (var member in members) {
+                    if (member.PartyMemberComponent == null) {
+                        // maybe very rarely on launch/login??
+                        continue;
+                    }
+
                     var node = member.PartyMemberComponent->OwnerNode;
-                    if (node == null || !node->IsVisible()) {
+                    if (node == null) {
+                        continue;
+                    }
+
+                    if (node->IsVisible == null) {
+                        this.PluginLog.Warning($"what. {node->NodeId}");
+                        continue;
+                    }
+
+                    if (!node->IsVisible()) {
                         continue;
                     }
 
