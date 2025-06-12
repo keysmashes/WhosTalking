@@ -616,7 +616,6 @@ public sealed class Plugin: IDalamudPlugin {
                                     var size = ImGui.CalcTextSize(user.DisplayName);
                                     var width = size.WithY(0);
                                     var imgSize = size.WithX(size.Y);
-                                    var spaceSize = ImGui.CalcTextSize(" ");
                                     var midPoint = position.WithX(position.X + (170 * partyAddon->AtkUnitBase.Scale));
                                     var rightEdge = midPoint.WithX(midPoint.X + (80 * partyAddon->AtkUnitBase.Scale));
                                     drawList.AddRectFilled(
