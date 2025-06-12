@@ -230,11 +230,11 @@ public sealed class ConfigWindow: Window, IDisposable {
         }
 
         if (this.plugin.PluginInterface.IsDev || this.plugin.PluginInterface.IsTesting) {
-            ImGui.Text("Hello, tester! Please ping me (sersorrel) with any issues you find :)");
+            ImGui.Text("Hello, tester! Please ping me (@keysmashes) with any issues you find :)");
         }
 
         if (this.plugin.PluginInterface.IsDev || !this.plugin.PluginInterface.IsTesting) {
-            ImGui.Text("If you report issues on Discord, ping me (sersorrel) or I will not see your message!");
+            ImGui.Text("If you report issues on Discord, ping me (@keysmashes) or I will not see your message!");
         }
 
         // Colour Assignments

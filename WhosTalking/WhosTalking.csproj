@@ -3,7 +3,7 @@
     <PropertyGroup>
         <Version>0.8.6.0</Version>
         <Description>See Discord voice activity indicators directly on your party list.</Description>
-        <PackageProjectUrl>https://github.com/sersorrel/WhosTalking</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/keysmashes/WhosTalking</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
