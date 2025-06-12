@@ -434,8 +434,8 @@ public sealed class ConfigWindow: Window, IDisposable {
                 }
             }
 
-            var configInvalid = this.individualAssignments.Any(
-                p => string.IsNullOrEmpty(p.DiscordId) || string.IsNullOrEmpty(p.CharacterName)
+            var configInvalid = this.individualAssignments.Any(p =>
+                string.IsNullOrEmpty(p.DiscordId) || string.IsNullOrEmpty(p.CharacterName)
             );
             configInvalid |= this.individualAssignments.Count
                 != this.individualAssignments.Select(p => p.CharacterName).Distinct().Count();
