@@ -8,7 +8,7 @@ using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace WhosTalking.Windows;
 
@@ -516,7 +516,7 @@ public sealed class ConfigWindow: Window, IDisposable {
         if (img is not null) {
             ImGui.GetWindowDrawList()
                 .AddImage(
-                    img.ImGuiHandle,
+                    img.Handle,
                     preview_min,
                     preview_max
                 );

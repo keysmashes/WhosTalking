@@ -17,7 +17,7 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using JetBrains.Annotations;
 using WhosTalking.Discord;
 using WhosTalking.Windows;
@@ -227,7 +227,7 @@ public sealed class Plugin: IDalamudPlugin {
             return;
         }
 
-        var partyList = (AddonPartyList*)args.Addon;
+        var partyList = (AddonPartyList*)args.Addon.Address;
         if (partyList == null) {
             return;
         }
@@ -264,7 +264,7 @@ public sealed class Plugin: IDalamudPlugin {
             return;
         }
 
-        var allianceList = (AtkUnitBase*)args.Addon;
+        var allianceList = (AtkUnitBase*)args.Addon.Address;
         if (allianceList == null) {
             return;
         }
@@ -406,7 +406,7 @@ public sealed class Plugin: IDalamudPlugin {
                     false
                 );
                 var drawList = ImGui.GetWindowDrawList();
-                var partyAddon = (AddonPartyList*)this.GameGui.GetAddonByName("_PartyList");
+                var partyAddon = (AddonPartyList*)this.GameGui.GetAddonByName("_PartyList").Address;
                 // TODO: check AddonPartyList.HideWhenSolo?
                 // FIXME: this is mostly broken lmao
                 // the IsVisible test prevents us from drawing if the party list is hidden because "hide party list when solo" is enabled,
@@ -425,7 +425,7 @@ public sealed class Plugin: IDalamudPlugin {
                     // also TODO: does this draw the indicators twice if PartyList.Length > 0 (i.e. in the duty)?
                     // I don't remember whether the cross-realm stuff stays set up in the instance, but I think it might
                     var ipcr = InfoProxyCrossRealm.Instance();
-                    if (ipcr->IsInAllianceRaid == 1) {
+                    if (ipcr->IsInAllianceRaid) {
                         var memberCount = InfoProxyCrossRealm.GetGroupMemberCount(ipcr->LocalPlayerGroupIndex);
                         for (var i = 0; i < memberCount; i++) {
                             var member = InfoProxyCrossRealm.GetGroupMember((uint)i);
@@ -481,8 +481,8 @@ public sealed class Plugin: IDalamudPlugin {
                     }
 
                     // do we need to draw indicators for other alliances?
-                    var allianceWindow1 = (AtkUnitBase*)this.GameGui.GetAddonByName("_AllianceList1");
-                    var allianceWindow2 = (AtkUnitBase*)this.GameGui.GetAddonByName("_AllianceList2");
+                    var allianceWindow1 = (AtkUnitBase*)this.GameGui.GetAddonByName("_AllianceList1").Address;
+                    var allianceWindow2 = (AtkUnitBase*)this.GameGui.GetAddonByName("_AllianceList2").Address;
                     var allianceWindow1Visible =
                         (nint)allianceWindow1 != nint.Zero
                         && allianceWindow1->IsVisible
@@ -494,7 +494,7 @@ public sealed class Plugin: IDalamudPlugin {
                         && (allianceWindow2->VisibilityFlags & 1) == 0
                         && (allianceWindow2->VisibilityFlags & 4) == 0;
                     // IsInAllianceRaid is true even in the pre-raid PF state, argh...
-                    if (ipcr->IsInAllianceRaid == 1 && allianceWindow1Visible && allianceWindow2Visible) {
+                    if (ipcr->IsInAllianceRaid && allianceWindow1Visible && allianceWindow2Visible) {
                         // PluginLog.Warning("FRAME");
                         var allianceWindowNumber = 1;
                         for (byte group = 0; group < ipcr->GroupCount; group++) {
@@ -645,14 +645,14 @@ public sealed class Plugin: IDalamudPlugin {
                                     if (user.Deafened.GetValueOrDefault() && deafenIconImg is not null) {
                                         var start = position + textPadding + width + new Vector2(3, 0);
                                         drawList.AddImage(
-                                            deafenIconImg.ImGuiHandle,
+                                            deafenIconImg.Handle,
                                             start,
                                             start + imgSize
                                         );
                                     } else if (user.Muted.GetValueOrDefault() && muteIconImg is not null) {
                                         var start = position + textPadding + width + new Vector2(3, 0);
                                         drawList.AddImage(
-                                            muteIconImg.ImGuiHandle,
+                                            muteIconImg.Handle,
                                             start,
                                             start + imgSize
                                         );
