@@ -2,6 +2,7 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Windowing;
@@ -9,7 +10,6 @@ using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
-using Dalamud.Bindings.ImGui;
 
 namespace WhosTalking.Windows;
 

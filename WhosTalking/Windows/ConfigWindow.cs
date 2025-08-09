@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
-using Dalamud.Bindings.ImGui;
 
 namespace WhosTalking.Windows;
 
