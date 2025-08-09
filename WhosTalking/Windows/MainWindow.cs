@@ -9,7 +9,7 @@ using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace WhosTalking.Windows;
 
@@ -43,7 +43,7 @@ public sealed class MainWindow: Window, IDisposable {
 
         ImGui.Text("GroupManager party");
         foreach (var member in GroupManager.Instance()->MainGroup.PartyMembers) {
-            ImGui.TextUnformatted($"{member.NameString} {member.X}");
+            ImGui.TextUnformatted($"{member.NameString} {member.HomeWorld}"); // {member.X}");
         }
 
         ImGui.Text("GroupManager alliance");
