@@ -26,7 +26,7 @@ public sealed class ConfigWindow: Window, IDisposable {
         this.ResetListToConfig();
 
         this.SizeConstraints = new WindowSizeConstraints {
-            MinimumSize = new Vector2(600, 300),
+            MinimumSize = new Vector2(700, 300),
             MaximumSize = new Vector2(float.MaxValue, float.MaxValue),
         };
 
