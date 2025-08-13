@@ -1,3 +1,7 @@
+**New repository: <https://codeberg.org/keysmashes/WhosTalking>**
+
+---
+
 # Who's Talking
 
 [![Download count](https://img.shields.io/endpoint?url=https://qzysathwfhebdai6xgauhz4q7m0mzmrf.lambda-url.us-east-1.on.aws/WhosTalking)](https://github.com/keysmashes/WhosTalking)
